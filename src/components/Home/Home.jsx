@@ -153,7 +153,100 @@ const Home = () => {
             </Masonry>
           </ResponsiveMasonry>
         </section>
-        <section className={stl.markets}></section>
+        <section className={stl.markets}>
+          <div className={stl.marqueeBox}>
+            <Marquee speed={300}>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+            </Marquee>
+          </div>
+          <div className={stl.joinBox}>
+            <h2 className={stl.joinTitle}>Join $BOBR Today</h2>
+            <div className={stl.linksBar}>
+              <button
+                className={stl.actionCta}
+                onClick={() =>
+                  window.open(
+                    "https://jup.ag/swap/SOL-ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump",
+                    "_blank"
+                  )
+                }
+              >
+                <img src="../Jupiter.png" alt="Jupiter" className={stl.icon} />
+              </button>
+              <button
+                className={stl.actionCta}
+                onClick={() =>
+                  window.open(
+                    "https://dexscreener.com/solana/ffxegwvrxnabkgppp2gvmfbemnaijqejaffbqjiuav6s",
+                    "_blank"
+                  )
+                }
+              >
+                <img
+                  src="../Dexscreener.jpeg"
+                  alt="Dexscreener"
+                  className={stl.icon}
+                />
+              </button>
+              <button
+                className={stl.actionCta}
+                onClick={() => window.open("https://x.com/bobrCTO", "_blank")}
+              >
+                <FaXTwitter />
+              </button>
+              <button
+                className={stl.actionCta}
+                onClick={() => window.open("https://t.me/bobrportal", "_blank")}
+              >
+                <FaTelegramPlane />
+              </button>
+              <img src="../BobrKurwa.png" alt="Bobr" className={stl.bg} />
+            </div>
+          </div>
+          <div className={stl.marqueeBox}>
+            <Marquee speed={300} direction="right">
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>KURWA</span>
+            </Marquee>
+          </div>
+        </section>
       </main>
     </div>
   );
