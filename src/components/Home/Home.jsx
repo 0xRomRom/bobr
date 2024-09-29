@@ -9,30 +9,30 @@ import Marquee from "react-fast-marquee";
 import { FaRegCopy } from "react-icons/fa";
 
 const memes = [
-  "../Meme1.jpeg",
+  // "../Meme1.jpg",
   "../Meme2.jpeg",
   "../Meme4.jpg",
-  "../Meme5.jpeg",
-  "../Meme6.jpeg",
+  // "../Meme5.jpeg",
+  "../Meme6.jpg",
   "../Meme7.jpg",
   "../Meme8.jpeg",
   "../Meme3.jpg",
-  "../Meme18.jpeg",
+  // "../Meme18.jpeg",
   "../Meme9.jpeg",
   "../Meme10.jpg",
   "../Meme11.webp",
   "../Meme16.jpg",
-  "../Meme14.jpeg",
+  // "../Meme14.jpeg",
   "../Meme12.jpeg",
-  "../Meme13.jpeg",
+  // "../Meme13.jpeg",
   "../Meme15.jpg",
   "../Meme20.jpg",
   "../Meme17.jpg",
   "../Meme19.jpg",
   "../Meme21.jpeg",
   "../Meme22.jpeg",
-  "../Meme23.jpg",
   "../Meme24.jpg",
+  "../Meme23.jpg",
   "../Meme25.webp",
 ];
 
@@ -151,17 +151,18 @@ const Home = () => {
           <div className={stl.scrollWrapper}>
             <div className={stl.wrapper}>
               <p className={stl.stickyText}>
-                Once upon a time in Poland, a playful beaver named Bobr became a
-                surprising internet star. People loved his silly actions and
-                funny personality. Bobr was known for his over-the-top
-                expressions and for getting into the craziest situations. He
-                turned boring moments into funny adventures, like trying to
-                build a dam using household items and hosting a cooking show
-                with only river weeds. As he became more popular, Bobr
-                symbolized fun and laughter, bringing people together through
-                humor and creativity. He inspired countless memes, fan art, and
-                videos that celebrated his quirky charm, making him a beloved
-                character online.
+                Once upon a time in Poland, a playful beaver became an
+                unexpected internet star. A video went viral featuring a man
+                filming the beaver and shouting, "KURWA BÓBR!" ("F*cking
+                Beaver!" in Polish).
+                <br /> <br /> The man's exasperated yet amused reaction struck a
+                chord, and the beaver's unbothered demeanor turned the clip into
+                a sensation. The phrase "KURWA BÓBR!" quickly became a meme,
+                inspiring countless fan art, remixes, and parody videos. The
+                beaver and the now-iconic expression became symbols of the
+                internet's love for the absurd and hilarious, making him a
+                beloved figure across the web and a testament to how the
+                simplest moments can bring people together through humor.
               </p>
             </div>
             <img src="../Kurwa.webp" alt="Kurwa" className={stl.kurwaImg} />
@@ -249,26 +250,26 @@ const Home = () => {
           </div>
           <div className={stl.marqueeBox2}>
             <Marquee speed={300} direction="right">
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
-              <span className={stl.kurwaSpan}>KURWA</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
+              <span className={stl.kurwaSpan}>BOBR</span>
             </Marquee>
           </div>
         </section>

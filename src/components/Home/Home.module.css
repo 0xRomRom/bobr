@@ -40,7 +40,7 @@ header {
   background-image: url("../Hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 90% 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +56,8 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 25rem;
+  padding-top: 42rem;
+  margin-left: 3rem;
 }
 
 .hero {
@@ -362,7 +363,7 @@ main {
 
 .headertitle {
   position: absolute;
-  top: 14rem;
+  top: 12rem;
   font-size: 11vw;
   text-align: center;
 }
@@ -380,9 +381,17 @@ main {
   transform: scale(1.05);
 }
 
+@media only screen and (max-width: 1200px) {
+  header {
+    background-position: 55% 80%;
+  }
+}
 @media only screen and (max-width: 700px) {
   .joinBox {
     width: 95%;
+  }
+  .centerbox {
+    margin-left: 2rem;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -390,12 +399,15 @@ main {
     font-size: 8rem;
     top: 5rem;
   }
+  .centerbox {
+    margin-left: 0rem;
+  }
 }
 
 @media only screen and (max-width: 450px) {
   .headertitle {
-    font-size: 6rem;
-    top: 5rem;
+    font-size: 7rem;
+    top: 8rem;
   }
   .copy {
     font-size: 20px;
