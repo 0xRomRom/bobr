@@ -247,7 +247,7 @@ const Home = () => {
               <img src="../BobrKurwa.png" alt="Bobr" className={stl.bg} />
             </div>
           </div>
-          <div className={stl.marqueeBox}>
+          <div className={stl.marqueeBox2}>
             <Marquee speed={300} direction="right">
               <span className={stl.kurwaSpan}>KURWA</span>
               <span className={stl.kurwaSpan}>KURWA</span>
