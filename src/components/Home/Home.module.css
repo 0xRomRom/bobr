@@ -13,7 +13,7 @@ nav {
   position: fixed;
   top: 0;
   inset: 0;
-  z-index: 10;
+  z-index: 150;
   gap: 0.5rem;
   padding-right: 1rem;
 }
@@ -27,7 +27,6 @@ nav button {
   color: rgb(227, 227, 227);
   cursor: pointer;
   transition: all 0.1s ease-in-out;
-  z-index: 10;
 }
 
 nav button:hover {
@@ -258,6 +257,7 @@ main {
 
 .memeImg {
   border-radius: 0.5rem;
+  z-index: 100;
 }
 
 .markets {
@@ -381,6 +381,132 @@ main {
   transform: scale(1.05);
 }
 
+.howtobuy {
+  height: 100rem;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+  position: relative;
+  background-image: url("../Trees.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0rem 1rem;
+}
+
+.howtobuy::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 700px;
+  background: linear-gradient(180deg, black, rgba(0, 0, 0, 0));
+}
+.howtobuy::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1200px;
+  bottom: 0;
+  background: linear-gradient(360deg, black, rgba(0, 0, 0, 0));
+}
+
+.stickyBox {
+  /* background-color: red; */
+  width: 100%;
+  height: 20rem;
+  margin-top: -5rem;
+  text-align: center;
+  position: relative;
+  /* overflow: auto; */
+}
+
+.howToHero {
+  font-size: 38px;
+  color: rgb(231, 85, 253);
+  font-size: 80px;
+  text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+    2px 2px 0 #fff;
+  position: sticky;
+  top: 10rem;
+}
+
+.blackBox {
+  height: 5rem;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: -1rem;
+  z-index: 20;
+}
+
+.modalStack {
+  width: 30rem;
+  height: 60rem;
+  /* background-color: red; */
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stackModal {
+  width: 100%;
+  min-height: 12.5rem;
+  /* background-color: red; */
+  z-index: 100;
+  border-radius: 2rem;
+  background-color: rgb(0, 44, 18);
+  backdrop-filter: blur(2rem);
+  border: 2px solid rgb(0, 68, 0);
+
+  color: white;
+  text-shadow: none;
+  padding: 1rem;
+
+  position: relative;
+}
+.stackModal:nth-child(odd) {
+  margin-right: 6rem;
+}
+
+.innerModal {
+  z-index: 100;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  position: relative;
+}
+
+.coble {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background-image: url("../Cobblestone.webp");
+  background-size: contain;
+  z-index: 0;
+  opacity: 0.3;
+  border-radius: 2rem;
+}
+
+.stackModal p {
+  font-size: 24px;
+  text-align: center;
+}
+
+.phantomAnchor {
+  color: white;
+}
+
 @media only screen and (max-width: 1200px) {
   header {
     background-position: 55% 80%;
@@ -393,6 +519,9 @@ main {
   .centerbox {
     margin-left: 2rem;
   }
+  .stackModal {
+    margin: 0 !important;
+  }
 }
 @media only screen and (max-width: 600px) {
   .headertitle {
@@ -404,9 +533,18 @@ main {
   }
 }
 
+@media only screen and (max-width: 550px) {
+  .modalStack {
+    width: 100%;
+    /* padding: 0 1rem; */
+  }
+  .stackModal {
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 450px) {
   .headertitle {
-    font-size: 7rem;
+    font-size: 27vw;
     top: 8rem;
   }
   .copy {

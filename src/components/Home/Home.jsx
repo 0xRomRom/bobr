@@ -7,6 +7,7 @@ import { ImCross } from "react-icons/im";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Marquee from "react-fast-marquee";
 import { FaRegCopy } from "react-icons/fa";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const memes = [
   // "../Meme1.jpg",
@@ -47,6 +48,7 @@ const Home = () => {
         console.error("Failed to copy: ", err);
       });
   };
+
   useEffect(() => {
     const kurwaContainer = document.querySelector(`.${stl.kurwaContainer}`);
 
@@ -76,6 +78,11 @@ const Home = () => {
       createFallingSpan();
     }
   }, []);
+
+  const modalVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <div className={stl.home}>
@@ -147,6 +154,7 @@ const Home = () => {
 
           <div className={stl.kurwaContainer}></div>
         </section>
+
         <section className={stl.lore}>
           <div className={stl.scrollWrapper}>
             <div className={stl.wrapper}>
@@ -168,6 +176,7 @@ const Home = () => {
             <img src="../Kurwa.webp" alt="Kurwa" className={stl.kurwaImg} />
           </div>
         </section>
+
         <section className={stl.memes}>
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
@@ -179,6 +188,146 @@ const Home = () => {
             </Masonry>
           </ResponsiveMasonry>
         </section>
+
+        <section className={stl.howtobuy}>
+          <div className={stl.stickyBox}>
+            <div className={stl.blackBox}></div>
+            <h2 className={stl.howToHero}>How To Buy $BOBR</h2>
+          </div>
+          <div className={stl.modalStack}>
+            <motion.div
+              className={stl.stackModal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={modalVariants}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={stl.innerModal}>
+                <h2>Step 1 )</h2>
+                <p>Create a Solana wallet.</p>
+
+                <p>
+                  Head over to{" "}
+                  <a
+                    className={stl.phantomAnchor}
+                    href="https://chromewebstore.google.com/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa?pli=1"
+                    target="_blank"
+                  >
+                    phantom.app
+                  </a>{" "}
+                  and install the browser extension. Follow the instructions to
+                  create your own Solana wallet.
+                </p>
+              </div>
+              <div className={stl.coble}></div>
+            </motion.div>
+
+            <motion.div
+              className={stl.stackModal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={modalVariants}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={stl.innerModal}>
+                <h2>Step 2 )</h2>
+                <p>Fund your wallet with Solana</p>
+                <p>
+                  Find an exchange in your region that allows for your favorite
+                  Fiat to crypto transfer methods, and proceed to purchase
+                  Solana. After purchase transfer the Solana to your Phantom
+                  wallet.
+                </p>
+              </div>
+              <div className={stl.coble}></div>
+            </motion.div>
+
+            <motion.div
+              className={stl.stackModal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={modalVariants}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={stl.innerModal}>
+                <h2>Step 3 )</h2>
+                <p>Find the right buy opportunity</p>
+                <p>
+                  Now that you're setup, ready to buy $BOBR, let's find you a
+                  good price entry.
+                </p>
+                <p>
+                  Head over to{" "}
+                  <a
+                    className={stl.phantomAnchor}
+                    href="https://dexscreener.com/solana/ffxegwvrxnabkgppp2gvmfbemnaijqejaffbqjiuav6s"
+                    target="_blank"
+                  >
+                    Dexscreener
+                  </a>{" "}
+                  and find out about the current market's state.
+                </p>
+              </div>
+              <div className={stl.coble}></div>
+            </motion.div>
+
+            <motion.div
+              className={stl.stackModal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={modalVariants}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={stl.innerModal}>
+                <h2>Step 4 )</h2>
+                <p>Buy $BOBR</p>
+                <p>
+                  Found a dip? Let's buy it! Head over to{" "}
+                  <a
+                    className={stl.phantomAnchor}
+                    href="https://jup.ag/swap/SOL-ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump"
+                    target="_blank"
+                  >
+                    Jupiter Exchange
+                  </a>{" "}
+                  and purchase the desired amount of $BOBR while it's cheap.
+                </p>
+              </div>
+              <div className={stl.coble}></div>
+            </motion.div>
+            <motion.div
+              className={stl.stackModal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={modalVariants}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={stl.innerModal}>
+                <h2>Step 5 )</h2>
+                <p>There is no step 5, welcome!</p>
+                <p>
+                  BOBR loves you and welcomes you to their friendly community
+                  run{" "}
+                  <a
+                    href="https://t.me/bobrportal"
+                    className={stl.phantomAnchor}
+                  >
+                    {" "}
+                    telegram
+                  </a>
+                  .
+                </p>
+              </div>
+              <div className={stl.coble}></div>
+            </motion.div>
+          </div>
+        </section>
+
         <section className={stl.markets}>
           <div className={stl.marqueeBox}>
             <Marquee speed={300}>
