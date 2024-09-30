@@ -34,7 +34,7 @@ nav button:hover {
 }
 
 header {
-  height: 100vh;
+  height: 60rem;
   width: 100%;
   background-image: url("../Hero.jpg");
   background-repeat: no-repeat;
@@ -435,7 +435,7 @@ main {
 }
 
 .blackBox {
-  height: 5rem;
+  height: 9rem;
   width: 100%;
   background-color: black;
   position: absolute;
@@ -530,6 +530,12 @@ main {
   }
   .centerbox {
     margin-left: 0rem;
+  }
+  .howtobuy {
+    height: 93rem;
+  }
+  header {
+    height: 55rem;
   }
 }
 

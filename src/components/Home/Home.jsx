@@ -61,7 +61,7 @@ const Home = () => {
       span.style.left = `${Math.random() * 100}%`;
 
       // Random speed for each span
-      const duration = Math.random() * 7 + 2; // 2 to 5 seconds
+      const duration = Math.random() * 3 + 2; // 2 to 5 seconds
       span.style.animationDuration = `${duration}s`;
 
       kurwaContainer.appendChild(span);
@@ -74,7 +74,7 @@ const Home = () => {
     };
 
     // Generate multiple spans
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 7; i++) {
       createFallingSpan();
     }
   }, []);
@@ -311,8 +311,7 @@ const Home = () => {
                 <h2>Step 5 )</h2>
                 <p>There is no step 5, welcome!</p>
                 <p>
-                  BOBR loves you and welcomes you to their friendly community
-                  run{" "}
+                  BOBR loves you and welcomes you to their friendly community on{" "}
                   <a
                     href="https://t.me/bobrportal"
                     className={stl.phantomAnchor}
