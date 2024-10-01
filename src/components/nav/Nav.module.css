@@ -1,0 +1,48 @@
+nav {
+  height: 3rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.218);
+  backdrop-filter: blur(0.25rem);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  inset: 0;
+  z-index: 150;
+  gap: 0.5rem;
+  padding-right: 1rem;
+}
+
+nav button {
+  width: 3rem;
+  font-size: 28px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: rgb(227, 227, 227);
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+nav button:hover {
+  color: white;
+}
+
+.memeMaker {
+  color: white;
+  font-size: 24px;
+  background-color: rgb(231, 85, 253);
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 2rem;
+  border: 3px solid black;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.memeMaker:hover {
+  background-color: rgb(192, 11, 220);
+}

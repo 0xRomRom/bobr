@@ -86,16 +86,6 @@ const Home = () => {
 
   return (
     <div className={stl.home}>
-      <nav>
-        <button onClick={() => window.open("https://x.com/bobrCTO", "_blank")}>
-          <FaXTwitter />
-        </button>
-        <button
-          onClick={() => window.open("https://t.me/bobrportal", "_blank")}
-        >
-          <FaTelegramPlane />
-        </button>
-      </nav>
       <header>
         <div className={stl.centerbox}>
           <h1 className={stl.headertitle}>Solana's Friendliest Rodent</h1>
@@ -233,7 +223,7 @@ const Home = () => {
             >
               <div className={stl.innerModal}>
                 <h2>Step 2 )</h2>
-                <p>Fund your wallet with Solana</p>
+                <p>Fund your wallet with Solana.</p>
                 <p>
                   Find an exchange in your region that allows for your favorite
                   Fiat to crypto transfer methods, and proceed to purchase
@@ -254,7 +244,7 @@ const Home = () => {
             >
               <div className={stl.innerModal}>
                 <h2>Step 3 )</h2>
-                <p>Find the right buy opportunity</p>
+                <p>Find the right buy opportunity.</p>
                 <p>
                   Now that you're setup, ready to buy $BOBR, let's find you a
                   good price entry.
@@ -284,7 +274,7 @@ const Home = () => {
             >
               <div className={stl.innerModal}>
                 <h2>Step 4 )</h2>
-                <p>Buy $BOBR</p>
+                <p>Buy $BOBR.</p>
                 <p>
                   Found a dip? Let's buy it! Head over to{" "}
                   <a
