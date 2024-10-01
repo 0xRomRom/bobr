@@ -10,7 +10,7 @@ import "./canvas.css";
 const presets = [
   {
     preset: 1,
-    src: "../Head.png",
+    src: "../Head1.png",
   },
 ];
 
@@ -111,7 +111,7 @@ const MemeMaker = () => {
   };
 
   const handleAddText = () => {
-    const textObject = new Textbox("YAKUB", {
+    const textObject = new Textbox("KURWA", {
       left: 0,
       top: 0,
       fill: "white",
@@ -176,7 +176,34 @@ const MemeMaker = () => {
             </div>
           ))}
         </div>
-        <div className={stl.bar}></div>
+        <div className={stl.bar}>
+          <button className={stl.addCta} onClick={handleAddImageClick}>
+            <FaPlus />
+            Add Image
+          </button>
+          <button className={stl.addCta} onClick={handleAddText}>
+            <FaPlus />
+            Add Text
+          </button>
+          {fileArray.map((file, index) => (
+            <div
+              className={stl.fileBlock}
+              key={index}
+              onClick={() => {
+                focusImage(index);
+              }}
+            >
+              <span>{file?.name}</span>
+              <FaTrashCan
+                className={stl.trash}
+                onClick={() => deleteImage(index)}
+              />
+            </div>
+          ))}
+        </div>
+        <button className={stl.saveCta} onClick={saveCanvasAsImage}>
+          Save Image
+        </button>
       </div>
     </div>
   );
