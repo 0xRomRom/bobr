@@ -9,3 +9,25 @@
   box-sizing: border-box;
   font-family: RSFont;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 1rem;
+  width: 0.625rem;
+  background-color: transparent;
+}
+
+/* Define the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: rgb(19, 26, 31);
+  border-radius: 6px;
+  background-color: hsl(220 23% 31%/1);
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}

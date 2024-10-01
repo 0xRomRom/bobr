@@ -5,12 +5,36 @@ import { useRef, useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaRegCopy } from "react-icons/fa";
+import "./canvas.css";
+
+const presets = [
+  {
+    preset: 1,
+    src: "../Meme1.jpg",
+  },
+];
 
 const MemeMaker = () => {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
   const [canvas, setCanvas] = useState(false);
   const [fileArray, setFileArray] = useState([]);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const initCanvas = new Canvas(canvasRef.current, {
+        width: 500,
+        height: 500,
+      });
+      initCanvas.backgroundColor = "#000";
+      initCanvas.renderAll();
+      setCanvas(initCanvas);
+
+      return () => {
+        initCanvas.dispose();
+      };
+    }
+  }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -42,16 +66,95 @@ const MemeMaker = () => {
   const handleAddImageClick = () => {
     fileInputRef.current.click();
   };
+  const deleteImage = (index) => {
+    const objects = canvas.getObjects();
+
+    const updatedFileArray = fileArray.filter((_, i) => i !== index);
+    setFileArray(updatedFileArray);
+
+    if (objects.length > index) {
+      canvas.remove(objects[index]);
+      canvas.renderAll();
+    }
+  };
+
+  const focusImage = (index) => {
+    const objects = canvas.getObjects();
+    canvas.discardActiveObject();
+
+    const selection = new ActiveSelection([objects[index]], {
+      canvas: canvas,
+    });
+
+    canvas.setActiveObject(selection);
+    canvas.requestRenderAll();
+  };
+
+  const addPreset = (img) => {
+    const imgObj = new Image();
+    imgObj.src = img.src;
+    imgObj.onload = () => {
+      const fabricImg = new FabricImage(imgObj);
+      fabricImg.set({
+        left: 0,
+        top: 0,
+        selectable: true,
+      });
+      setFileArray((prev) => [
+        ...prev,
+        { ...fabricImg, name: `Preset ${img.preset}` },
+      ]);
+
+      canvas.add(fabricImg);
+      canvas.renderAll();
+    };
+  };
+
+  const handleAddText = () => {
+    const textObject = new Textbox("YAKUB", {
+      left: 0,
+      top: 0,
+      fill: "white",
+      editable: true,
+    });
+
+    canvas.add(textObject);
+
+    setFileArray((prev) => [...prev, { ...textObject, name: "Text" }]);
+    canvas.renderAll();
+  };
+
+  const saveCanvasAsImage = () => {
+    if (canvas) {
+      const dataUrl = canvas.toDataURL({
+        format: "png",
+        quality: 1,
+      });
+
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "YAKUB.png";
+      link.click();
+    }
+  };
 
   return (
     <div className={stl.mememaker}>
       <h1>BOBR Maker</h1>
       <div className={stl.makerModal}>
         <div className={stl.canvasWrap}>
-          <span className={stl.uploadSpan} onClick={handleAddImageClick}>
-            <FiUpload />
-            Upload Image
-          </span>
+          <canvas
+            id="canvas"
+            ref={canvasRef}
+            className={stl.canvas}
+            width="100vw"
+          />
+          {fileArray.length === 0 && (
+            <span className={stl.uploadSpan} onClick={handleAddImageClick}>
+              <FiUpload />
+              Upload Image
+            </span>
+          )}
           <input
             ref={fileInputRef}
             type="file"
@@ -60,7 +163,19 @@ const MemeMaker = () => {
             className={stl.hidden}
           />
         </div>
-        <div className={stl.bar}></div>
+        <div className={stl.bar}>
+          <button className={stl.addCta}>Presets</button>
+          {presets.map((preset, index) => (
+            <div
+              className={stl.fileBlock}
+              key={index}
+              onClick={() => addPreset(preset)}
+            >
+              <img src={preset.src} alt="Preset" className={stl.presetImg} />
+              <span>Preset {index + 1}</span>
+            </div>
+          ))}
+        </div>
         <div className={stl.bar}></div>
       </div>
     </div>
