@@ -12,6 +12,26 @@ const presets = [
     preset: 1,
     src: "../Head1.png",
   },
+  {
+    preset: 2,
+    src: "../Head2.png",
+  },
+  {
+    preset: 3,
+    src: "../Head3.png",
+  },
+  {
+    preset: 4,
+    src: "../Head4.png",
+  },
+  {
+    preset: 5,
+    src: "../Head5.png",
+  },
+  {
+    preset: 6,
+    src: "../Head6.png",
+  },
 ];
 
 const MemeMaker = () => {
@@ -116,6 +136,7 @@ const MemeMaker = () => {
       top: 0,
       fill: "white",
       editable: true,
+      fontFamily: "Helvetica",
     });
 
     canvas.add(textObject);
@@ -133,7 +154,7 @@ const MemeMaker = () => {
 
       const link = document.createElement("a");
       link.href = dataUrl;
-      link.download = "YAKUB.png";
+      link.download = "BOBR.png";
       link.click();
     }
   };

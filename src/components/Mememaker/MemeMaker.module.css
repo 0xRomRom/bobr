@@ -154,4 +154,24 @@
   padding: 1rem 0rem;
   color: white;
   font-size: 24px;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.saveCta:hover {
+  background-color: rgb(207, 22, 235);
+}
+
+@media only screen and (max-width: 600px) {
+  .canvasWrap {
+    width: 100%;
+  }
+  .makerModal {
+    width: 100%;
+  }
+
+  .mememaker {
+    padding-top: 3rem;
+  }
 }
