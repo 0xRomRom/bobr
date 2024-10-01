@@ -32,6 +32,26 @@ const presets = [
     preset: 6,
     src: "../Head6.png",
   },
+  {
+    preset: 7,
+    src: "../Head7.png",
+  },
+  {
+    preset: 8,
+    src: "../Head8.png",
+  },
+  {
+    preset: 9,
+    src: "../Head9.png",
+  },
+  {
+    preset: 10,
+    src: "../Head10.png",
+  },
+  {
+    preset: 11,
+    src: "../Head11.png",
+  },
 ];
 
 const MemeMaker = () => {
@@ -86,9 +106,10 @@ const MemeMaker = () => {
   const handleAddImageClick = () => {
     fileInputRef.current.click();
   };
+
   const deleteImage = (index) => {
     const objects = canvas.getObjects();
-
+    console.log(objects);
     const updatedFileArray = fileArray.filter((_, i) => i !== index);
     setFileArray(updatedFileArray);
 
