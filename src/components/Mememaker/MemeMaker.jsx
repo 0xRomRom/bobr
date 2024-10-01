@@ -10,7 +10,7 @@ import "./canvas.css";
 const presets = [
   {
     preset: 1,
-    src: "../Meme1.jpg",
+    src: "../Head.png",
   },
 ];
 
