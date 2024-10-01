@@ -41,6 +41,9 @@ nav button:hover {
   border: 3px solid black;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
 }
 
 .memeMaker:hover {
