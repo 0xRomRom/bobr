@@ -13,8 +13,9 @@ import { FaPeopleCarry } from "react-icons/fa";
 import { FaSyringe } from "react-icons/fa";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Marquee from "react-fast-marquee";
-import { FaRegCopy } from "react-icons/fa";
+
 import { motion } from "framer-motion"; // Import Framer Motion
+import Header from "./header/Header";
 
 const memes = [
   // "../Meme1.jpg",
@@ -45,17 +46,6 @@ const memes = [
 ];
 
 const Home = () => {
-  const copyBotWallet = () => {
-    navigator.clipboard
-      .writeText("ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump")
-      .then(() => {
-        alert(`KURWA!`);
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-  };
-
   useEffect(() => {
     const kurwaContainer = document.querySelector(`.${stl.kurwaContainer}`);
 
@@ -93,26 +83,7 @@ const Home = () => {
 
   return (
     <div className={stl.home}>
-      <header>
-        <div className={stl.centerbox}>
-          <h1 className={stl.headertitle}>Solana's Friendliest Rodent</h1>
-          <img src="../Bober.png" alt="Bobr" className={stl.centerbobr} />
-          <button
-            className={stl.buyCta}
-            onClick={() =>
-              window.open(
-                "https://jup.ag/swap/SOL-ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump",
-                "_blank"
-              )
-            }
-          >
-            Buy $BOBR
-          </button>
-          <span className={stl.copy} onClick={copyBotWallet}>
-            ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump <FaRegCopy />
-          </span>
-        </div>
-      </header>
+      <Header />
       <main>
         <section className={stl.cutestMeme}>
           <div className={stl.content}>

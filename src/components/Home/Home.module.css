@@ -4,70 +4,10 @@
   background-color: rgb(16, 6, 6);
 }
 
-header {
-  height: 60rem;
-  width: 100%;
-  background-image: url("../Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 90% 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.centerbobr {
-  width: 250px;
-  margin-bottom: 3rem;
-}
-
-header::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  bottom: 0;
-  background: linear-gradient(360deg, black, rgba(0, 0, 0, 0));
-}
-
-.centerbox {
-  /* border: 1px solid red; */
-  color: rgb(231, 85, 253);
-  font-size: 80px;
-  text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
-    2px 2px 0 #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 12rem;
-  margin-left: 3rem;
-}
-
 .hero {
   /* -webkit-text-fill-color: #0000;
   background: linear-gradient(90deg, #9945ff, #14f195, #14f195, #14f195);
   -webkit-background-clip: text; */
-}
-
-.buyCta {
-  font-size: 42px;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-  color: white;
-  background-color: rgb(231, 85, 253);
-  font-weight: bold;
-  /* border: 2px solid white; */
-  box-shadow: 0px 0px 10px white;
-  transition: all 0.1s ease-in-out;
-  cursor: pointer;
-  z-index: 10;
-}
-.buyCta:hover {
-  transform: scale(1.1);
 }
 
 main {
@@ -140,6 +80,7 @@ main {
 
 .content h2 {
   margin-bottom: 2rem;
+  z-index: 10;
 }
 
 .check {
@@ -347,27 +288,6 @@ main {
   width: 300px;
   right: 0rem;
   top: -155px;
-}
-
-.headertitle {
-  position: absolute;
-  top: 12rem;
-  font-size: 8vw;
-  text-align: center;
-}
-
-.copy {
-  font-size: 24px;
-  text-shadow: none;
-  color: white;
-  text-shadow: 0px 0px 5px black;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
-  z-index: 10;
-}
-
-.copy:hover {
-  transform: scale(1.05);
 }
 
 .howtobuy {
@@ -586,9 +506,6 @@ main {
     font-size: 8rem;
     top: 5rem;
   }
-  .centerbox {
-    margin-left: 0rem;
-  }
   .howtobuy {
     height: 93rem;
   }
@@ -640,5 +557,8 @@ main {
     right: 0;
     background: linear-gradient(to left, rgb(0, 0, 0), rgba(255, 255, 255, 0));
     z-index: 100;
+  }
+  .cutestMeme {
+    height: 50rem !important;
   }
 }
