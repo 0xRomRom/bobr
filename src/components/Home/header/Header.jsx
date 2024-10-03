@@ -10,7 +10,7 @@ const Header = () => {
   useEffect(() => {
     // Set up the scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    scene.background = new THREE.Color(0x000000);
 
     // Set up the camera
     const camera = new THREE.PerspectiveCamera(
@@ -19,7 +19,7 @@ const Header = () => {
       0.1, // Near clipping plane
       1000 // Far clipping plane
     );
-    camera.position.z = 2;
+    camera.position.z = 4;
 
     // Set up the renderer
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
@@ -27,14 +27,27 @@ const Header = () => {
 
     // Set up controls
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-    controls.dampingFactor = 0.25; // an animation loop is required when either damping or auto-rotation are enabled
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
     controls.screenSpacePanning = false;
 
     const fbxLoader = new FBXLoader();
     fbxLoader.load(
-      "../bobrmodel/Pbr/base.fbx",
+      "../bobrmodel/Pbr/lod.fbx",
       (object) => {
+        console.log(object.children);
+        object.traverse((child) => {
+          if (child.isMesh) {
+            // Check if the mesh has a material and load texture if present
+            if (child.material) {
+              const textureLoader = new THREE.TextureLoader();
+              const material = new THREE.MeshStandardMaterial({
+                map: textureLoader.load("../bobrmodel/Pbr/shaded.png"), // Replace with actual texture path
+              });
+              child.material = material;
+            }
+          }
+        });
         object.scale.set(0.01, 0.01, 0.01);
         scene.add(object);
       },
@@ -45,6 +58,10 @@ const Header = () => {
         console.log(error);
       }
     );
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(0, 5, 10);
+    scene.add(directionalLight);
 
     // Animation loop
     const animate = () => {
