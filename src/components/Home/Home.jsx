@@ -96,6 +96,7 @@ const Home = () => {
       <header>
         <div className={stl.centerbox}>
           <h1 className={stl.headertitle}>Solana's Friendliest Rodent</h1>
+          <img src="../Bober.png" alt="Bobr" className={stl.centerbobr} />
           <button
             className={stl.buyCta}
             onClick={() =>

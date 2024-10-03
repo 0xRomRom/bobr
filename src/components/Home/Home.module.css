@@ -17,6 +17,11 @@ header {
   position: relative;
 }
 
+.centerbobr {
+  width: 250px;
+  margin-bottom: 3rem;
+}
+
 header::after {
   content: "";
   position: absolute;
@@ -36,7 +41,7 @@ header::after {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 42rem;
+  padding-top: 12rem;
   margin-left: 3rem;
 }
 
@@ -571,9 +576,6 @@ main {
 @media only screen and (max-width: 700px) {
   .joinBox {
     width: 95%;
-  }
-  .centerbox {
-    margin-left: 2rem;
   }
   .stackModal {
     margin: 0 !important;
