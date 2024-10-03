@@ -21,7 +21,7 @@ const Header = () => {
       0.1,
       1000
     );
-    camera.position.set(0, 3, 5); // Adjusted to better view the landscape
+    camera.position.set(0, 10, 20); // Adjusted to better view the landscape
 
     // Set up the renderer
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
@@ -64,30 +64,83 @@ const Header = () => {
       }
     );
 
+    const positions = [
+      { x: -45, y: 8, z: 0 },
+      { x: 45, y: 8, z: -20 },
+      { x: -10, y: 8, z: 15 },
+      // Add more positions as needed
+    ];
+
+    fbxLoader.load(
+      "../treemodel/Pbr/lod.fbx",
+      (object) => {
+        object.traverse((child) => {
+          if (child.isMesh) {
+            const textureLoader = new THREE.TextureLoader();
+            const material = new THREE.MeshStandardMaterial({
+              map: textureLoader.load("../treemodel/Pbr/texture_diffuse.png"),
+            });
+            child.material = material;
+          }
+        });
+        object.scale.set(0.1, 0.1, 0.1);
+
+        // Loop through the positions array and clone the object for each position
+        positions.forEach((pos) => {
+          const objectClone = object.clone(); // Clone the loaded object
+          objectClone.position.set(pos.x, pos.y, pos.z); // Set unique position
+          scene.add(objectClone); // Add the cloned object to the scene
+        });
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    const textArray = [
+      { x: -50, y: 0, z: -50, text: "Kurwa Bobr CTO" },
+      { x: 20, y: 10, z: -30, text: "t.me/bobrportal" },
+      { x: -10, y: 5, z: 15, text: "x.com/bobrCTO" },
+    ];
+
     // Load font and add text geometry
     const fontLoader = new FontLoader();
     fontLoader.load(
       "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
       (font) => {
-        const textGeometry = new TextGeometry("Kurwa Bobr CTO", {
-          font: font,
-          size: 0.5, // Adjust size as needed
-          depth: 0.2, // Adjust depth as needed
-          curveSegments: 12,
-          bevelEnabled: true,
-          bevelThickness: 0.03,
-          bevelSize: 0.02,
-          bevelOffset: 0,
-          bevelSegments: 5,
-        });
+        // Loop through the textStrings array and create text meshes
+        textArray.forEach((text, index) => {
+          const textGeometry = new TextGeometry(text.text, {
+            font: font,
+            size: 10, // Adjust size as needed
+            depth: 5, // Adjust depth as needed
+            curveSegments: 12,
+            bevelEnabled: true,
+            bevelThickness: 0.03,
+            bevelSize: 0.02,
+            bevelOffset: 0,
+            bevelSegments: 5,
+          });
 
-        const textMaterial = new THREE.MeshStandardMaterial({
-          color: 0xffffff,
+          const textMaterial = new THREE.MeshStandardMaterial({
+            color: 0xd713f5,
+          });
+
+          const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+          if (textArray[index]) {
+            textMesh.position.set(
+              textArray[index].x,
+              textArray[index].y,
+              textArray[index].z
+            ); // Set unique position based on the index
+          }
+          textMesh.renderOrder = 1;
+          textMesh.receiveShadow = true;
+          scene.add(textMesh); // Add each text mesh to the scene
         });
-        const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-        textMesh.position.set(3, 3, 0); // Adjust the position as needed
-        textMesh.renderOrder = 1;
-        scene.add(textMesh);
       }
     );
 
