@@ -66,6 +66,7 @@ main {
   background-size: cover;
   background-position: center;
   position: relative;
+  overflow: hidden;
 }
 
 .cutestMeme::before {
@@ -478,6 +479,78 @@ main {
   color: white;
 }
 
+.marqueeWrap {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 0rem;
+  position: relative;
+  z-index: 100;
+}
+
+.marqueeWrap::before {
+  position: absolute;
+  width: 225px;
+  height: 100%;
+  content: "";
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+  z-index: 100;
+}
+.marqueeWrap::after {
+  position: absolute;
+  width: 225px;
+  height: 100%;
+  content: "";
+  right: 0;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(255, 255, 255, 0));
+  z-index: 100;
+}
+
+.box {
+  width: 12.5rem;
+  height: 12.5rem;
+  /* border: 1px solid red; */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  background: linear-gradient(90deg, #00ff3c62, #00ff3c34);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  margin-right: 2rem;
+  font-size: 30px;
+}
+
+.box span {
+  position: absolute;
+  top: 8rem;
+}
+
+.icon {
+  font-family: "Titan One", sans-serif;
+  font-size: 52px;
+  letter-spacing: -10px;
+  color: yellow;
+  margin-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
+}
+
+.marqueeBox {
+  margin-top: 1rem;
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0rem 0.75rem;
+}
+
 @media only screen and (max-width: 1200px) {
   header {
     background-position: 55% 80%;
@@ -534,5 +607,24 @@ main {
   }
   .markets {
     height: 53rem;
+  }
+
+  .marqueeWrap::before {
+    position: absolute;
+    width: 125px;
+    height: 100%;
+    content: "";
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+    z-index: 100;
+  }
+  .marqueeWrap::after {
+    position: absolute;
+    width: 125px;
+    height: 100%;
+    content: "";
+    right: 0;
+    background: linear-gradient(to left, rgb(0, 0, 0), rgba(255, 255, 255, 0));
+    z-index: 100;
   }
 }

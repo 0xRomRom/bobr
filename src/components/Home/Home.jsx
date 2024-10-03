@@ -2,8 +2,15 @@ import React, { useEffect } from "react";
 import stl from "./Home.module.css";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa6";
-import { ImCross } from "react-icons/im";
+import { TbLockCheck } from "react-icons/tb";
+import { GiBurningSkull } from "react-icons/gi";
+import { AiFillPrinter } from "react-icons/ai";
+import { FaExchangeAlt } from "react-icons/fa";
+import { RiNumbersFill } from "react-icons/ri";
+import { FaTheaterMasks } from "react-icons/fa";
+import { GiCapybara } from "react-icons/gi";
+import { FaPeopleCarry } from "react-icons/fa";
+import { FaSyringe } from "react-icons/fa";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Marquee from "react-fast-marquee";
 import { FaRegCopy } from "react-icons/fa";
@@ -108,37 +115,67 @@ const Home = () => {
       <main>
         <section className={stl.cutestMeme}>
           <div className={stl.content}>
-            <h2>BOBR CTO</h2>
-            <div className={stl.boxWrapper}>
-              <div className={stl.checkBox}>
-                <h3 className={stl.check}>
-                  <FaCheck className={stl.checksize} /> Fair Launched
-                </h3>
-                <h3 className={stl.check}>
-                  <FaCheck className={stl.checksize} /> Organic Since Day 1
-                </h3>
-                <h3 className={stl.check}>
-                  <FaCheck className={stl.checksize} /> 100% Community Driven
-                </h3>
-                <h3 className={stl.check}>
-                  <FaCheck className={stl.checksize} /> Cutest Rodent on Solana
-                </h3>
-              </div>
-              <img src="../Bobr.jpeg" alt="BOBR" className={stl.bobrImg} />
-              <div className={stl.checkBox}>
-                <h3 className={stl.redCheck}>
-                  <ImCross className={stl.cross} /> No False Promises
-                </h3>
-                <h3 className={stl.redCheck}>
-                  <ImCross className={stl.cross} /> No Unlocks
-                </h3>
-                <h3 className={stl.redCheck}>
-                  <ImCross className={stl.cross} /> No Cabal
-                </h3>
-                <h3 className={stl.redCheck}>
-                  <ImCross className={stl.cross} /> No KOLs
-                </h3>
-              </div>
+            <h2>$BOBR CTO</h2>
+            <div className={stl.marqueeWrap}>
+              <Marquee speed={300}>
+                <div className={stl.box}>
+                  <TbLockCheck className={stl.icon} />
+                  <span>Renounced</span>
+                </div>
+                <div className={stl.box}>
+                  <GiBurningSkull className={stl.icon} />
+                  <span>Liquidity Burned</span>
+                </div>
+                <div className={stl.box}>
+                  <AiFillPrinter className={stl.icon} />
+                  <span>
+                    Mint Authority
+                    <br /> Revoked
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <FaExchangeAlt className={stl.icon} />
+                  <span>
+                    100% Tokens
+                    <br /> Circulating
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <RiNumbersFill className={stl.icon} />
+                  <span>
+                    Increasing
+                    <br /> Holder Count
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <GiCapybara className={stl.icon} />
+                  <span>
+                    Cutest Rodent
+                    <br /> On Solana
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <FaTheaterMasks className={stl.icon} />
+                  <span>
+                    Transparency
+                    <br /> Since Day 1
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <FaPeopleCarry className={stl.icon} />
+                  <span>
+                    Active
+                    <br /> Community
+                  </span>
+                </div>
+                <div className={stl.box}>
+                  <FaSyringe className={stl.icon} />
+                  <span>
+                    Team On
+                    <br /> Steroids
+                  </span>
+                </div>
+              </Marquee>
             </div>
           </div>
 
