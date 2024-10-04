@@ -17,6 +17,14 @@ const Nav = () => {
 
   return (
     <nav>
+      <button
+        onClick={() =>
+          window.open("https://magiceden.io/marketplace/bobardio", "_blank")
+        }
+        className={stl.nft}
+      >
+        NFT
+      </button>
       <button onClick={() => window.open("https://x.com/bobrCTO", "_blank")}>
         <FaXTwitter />
       </button>

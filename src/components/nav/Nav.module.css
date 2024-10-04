@@ -49,3 +49,20 @@ nav button:hover {
 .memeMaker:hover {
   background-color: rgb(192, 11, 220);
 }
+
+.nft {
+  background-color: green;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  border: 2px solid black;
+  transition: all 0.1s ease-in-out;
+}
+
+.nft:hover {
+  background-color: rgb(0, 189, 0);
+}
