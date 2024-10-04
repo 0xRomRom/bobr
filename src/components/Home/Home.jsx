@@ -18,22 +18,17 @@ import { motion } from "framer-motion"; // Import Framer Motion
 import Header from "./header/Header";
 
 const memes = [
-  // "../Meme1.jpg",
   "../Meme2.jpeg",
   "../Meme4.jpg",
-  // "../Meme5.jpeg",
   "../Meme6.jpg",
   "../Meme7.jpg",
   "../Meme8.jpeg",
   "../Meme3.jpg",
-  // "../Meme18.jpeg",
   "../Meme9.jpeg",
   "../Meme10.jpg",
   "../Meme11.webp",
   "../Meme16.jpg",
-  // "../Meme14.jpeg",
   "../Meme12.jpeg",
-  // "../Meme13.jpeg",
   "../Meme15.jpg",
   "../Meme20.jpg",
   "../Meme17.jpg",
@@ -43,6 +38,19 @@ const memes = [
   "../Meme24.jpg",
   "../Meme23.jpg",
   "../Meme25.webp",
+];
+
+const bobardios = [
+  "../Bobardio1.jpeg",
+  "../Bobardio2.jpg",
+  "../Bobardio3.jpg",
+  "../Bobardio4.jpg",
+  "../Bobardio5.jpg",
+  "../Bobardio6.jpg",
+  "../Bobardio7.jpg",
+  "../Bobardio8.jpg",
+  "../Bobardio9.jpg",
+  "../Bobardio10.jpg",
 ];
 
 const Home = () => {
@@ -80,6 +88,26 @@ const Home = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
+
+  useEffect(() => {
+    if (window.innerWidth < 500) return;
+    let currentIndex = 0;
+    const bobardioImages = document.querySelectorAll(`.${stl.bobImg}`);
+
+    const cycleImages = () => {
+      bobardioImages.forEach((img, index) => {
+        img.classList.remove(stl.active);
+        if (index === currentIndex) {
+          img.classList.add(stl.active);
+        }
+      });
+
+      currentIndex = (currentIndex + 1) % bobardioImages.length;
+    };
+
+    const interval = setInterval(cycleImages, 750); // Cycle every second
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={stl.home}>
@@ -323,6 +351,38 @@ const Home = () => {
               </div>
               <div className={stl.coble}></div>
             </motion.div>
+          </div>
+        </section>
+
+        <section className={stl.nftcollection}>
+          <h2 className={stl.bobardioNFT}>Bobardio NFT</h2>
+          <div className={stl.picGrid}>
+            <div className={stl.buyBox}>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://magiceden.io/marketplace/bobardio",
+                    "_blank"
+                  )
+                }
+              >
+                Buy on MagicEden
+              </button>
+            </div>
+            <ResponsiveMasonry columnsCountBreakPoints={{ 750: 2, 900: 3 }}>
+              <Masonry gutter="16px">
+                {bobardios
+                  .slice(0, window.innerWidth < 500 ? 10 : 9)
+                  .map((meme) => (
+                    <img
+                      src={meme}
+                      key={meme}
+                      alt="Meme"
+                      className={stl.bobImg}
+                    />
+                  ))}
+              </Masonry>
+            </ResponsiveMasonry>
           </div>
         </section>
 

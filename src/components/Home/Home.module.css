@@ -488,6 +488,87 @@ main {
   padding: 0rem 0.75rem;
 }
 
+.nftcollection {
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 5rem;
+}
+
+.bobardioNFT {
+  font-size: 60px;
+  margin-bottom: 2rem;
+  font-size: 38px;
+  color: rgb(231, 85, 253);
+  font-size: 80px;
+  text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+    2px 2px 0 #fff;
+}
+
+.picGrid {
+  width: 80vw;
+  margin-bottom: 10rem;
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.buyBox {
+  left: calc(50% - 118px);
+  top: 50%;
+  background-color: transparent;
+
+  position: absolute;
+  z-index: 100;
+}
+
+.buyBox button {
+  border: none;
+  outline: none;
+  font-size: 40px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.627);
+  cursor: pointer;
+}
+.buyBox button {
+  border: none;
+  outline: none;
+  font-size: 40px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.627);
+  transition: all 0.1s ease-in-out;
+}
+
+.buyBox button:hover {
+  background-color: white;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.bobImg {
+  opacity: 0.2;
+  transition: all 0.5s ease-in-out;
+  border-radius: 1rem;
+}
+
+.bobImg.active {
+  opacity: 1;
+  animation: fadeInOut 1s forwards;
+}
+
 @media only screen and (max-width: 1200px) {
   header {
     background-position: 55% 80%;
@@ -521,6 +602,19 @@ main {
   }
   .stackModal {
     width: 100%;
+  }
+  .bobImg {
+    opacity: 1;
+    width: 9rem;
+    height: 9rem;
+  }
+  .bobardioNFT {
+    font-size: 60px;
+  }
+
+  .buyBox {
+    bottom: -4.5rem;
+    top: auto;
   }
 }
 @media only screen and (max-width: 450px) {
