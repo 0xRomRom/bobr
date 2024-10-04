@@ -5,6 +5,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import { FaArrowCircleDown } from "react-icons/fa";
 
 const treePositions = [
   { x: -45, y: 8, z: 45 },
@@ -15,7 +16,7 @@ const treePositions = [
 const textArray = [
   {
     x: -50,
-    y: 0,
+    y: 0.5,
     z: -50,
     text: "Kurwa Bobr CTO",
     rotation: { x: 0, y: 0, z: 0 },
@@ -24,7 +25,7 @@ const textArray = [
   },
   {
     x: -50,
-    y: 0,
+    y: 0.5,
     z: 30,
     text: "t.me/bobrportal",
     rotation: { x: 0, y: Math.PI / 2, z: 0 },
@@ -33,7 +34,7 @@ const textArray = [
   },
   {
     x: 45,
-    y: 0,
+    y: 0.5,
     z: 50,
     text: "x.com/bobrCTO",
     rotation: { x: 0, y: Math.PI / 1, z: 0 },
@@ -288,19 +289,19 @@ const Header = () => {
     };
   }, []);
 
-  const copyBotWallet = () => {
-    navigator.clipboard
-      .writeText("ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump")
-      .then(() => {
-        alert(`KURWA!`);
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+  const handleScrollDown = () => {
+    const headerHeight = canvasRef.current.getBoundingClientRect().height;
+    window.scrollTo({
+      top: headerHeight,
+      behavior: "smooth",
+    });
   };
 
   return (
     <header>
+      <button onClick={handleScrollDown} className={stl.down}>
+        <FaArrowCircleDown />
+      </button>
       <canvas ref={canvasRef} className={stl.threeCanvas}></canvas>
     </header>
   );

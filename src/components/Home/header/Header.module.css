@@ -89,6 +89,25 @@ header::after {
   z-index: 100;
 }
 
+.down {
+  position: absolute;
+  z-index: 200;
+  font-size: 25px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: rgb(31, 31, 31);
+  opacity: 0.7;
+  bottom: 5rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.down:hover {
+  opacity: 1;
+  color: rgb(205, 205, 205);
+}
+
 @media only screen and (max-width: 600px) {
   .centerbox {
     margin-left: 0rem;
