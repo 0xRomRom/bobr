@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import stl from "./Header.module.css";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
@@ -6,12 +6,118 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 
+const treePositions = [
+  { x: -45, y: 8, z: 45 },
+  { x: 45, y: 8, z: 30 },
+  { x: 45, y: 8, z: -25 },
+];
+
+const textArray = [
+  {
+    x: -50,
+    y: 0,
+    z: -50,
+    text: "Kurwa Bobr CTO",
+    rotation: { x: 0, y: 0, z: 0 },
+    size: 10,
+    color: 0xd713f5,
+  },
+  {
+    x: -50,
+    y: 0,
+    z: 30,
+    text: "t.me/bobrportal",
+    rotation: { x: 0, y: Math.PI / 2, z: 0 },
+    size: 6,
+    color: 0xfcf403,
+  },
+  {
+    x: 45,
+    y: 0,
+    z: 50,
+    text: "x.com/bobrCTO",
+    rotation: { x: 0, y: Math.PI / 1, z: 0 },
+    size: 8,
+    color: 0x07fc03,
+  },
+];
+
 const Header = () => {
   const canvasRef = useRef();
+  const sceneRef = useRef();
+  const bobrPriceTextMeshRef = useRef();
+  const [terrainDone, setTerrainDone] = useState(false);
+
+  useEffect(() => {
+    if (!terrainDone) return;
+    const balanceFetcher = async () => {
+      const inputMint = "ET1FZVF2F33PfY2hLyK6EJ2p4x6dbkva4YBkULFdpump";
+      try {
+        const response = await fetch(
+          `https://price.jup.ag/v6/price?ids=${inputMint}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const quoteResponse = await response.json();
+        console.log(quoteResponse);
+        const bobrPrice = quoteResponse.data[inputMint].price;
+
+        const fontLoader = new FontLoader();
+        fontLoader.load(
+          "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
+          (font) => {
+            // Loop through the textArray and create text meshes
+
+            const textGeometry = new TextGeometry(
+              "$" + bobrPrice.toFixed(8).toString(),
+              {
+                font: font,
+                size: 5, // Adjust size as needed
+                depth: 0, // Adjust depth as needed
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.03,
+                bevelSize: 0.02,
+                bevelOffset: 0,
+                bevelSegments: 5,
+              }
+            );
+
+            textGeometry.center();
+
+            const textMaterial = new THREE.MeshStandardMaterial({
+              color: 0x03fcc6,
+            });
+
+            const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+
+            // Set position
+            textMesh.position.set(0, 2.5, -30);
+
+            // Set rotation
+            textMesh.rotation.set(0, 0, 0);
+
+            // textMesh.renderOrder = -1;
+            textMesh.receiveShadow = true;
+            sceneRef.current.add(textMesh); // Add each text mesh to the scene
+            bobrPriceTextMeshRef.current = textMesh;
+          }
+        );
+      } catch (err) {
+        console.error("Error fetching balance:", err);
+      }
+    };
+
+    balanceFetcher();
+  }, [terrainDone]);
 
   useEffect(() => {
     // Set up the scene
     const scene = new THREE.Scene();
+    sceneRef.current = scene;
     scene.background = new THREE.Color(0x000000); // Black background
 
     // Set up the camera
@@ -33,10 +139,12 @@ const Header = () => {
     controls.dampingFactor = 0.25;
     controls.screenSpacePanning = false;
 
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white light
+    scene.add(ambientLight);
     // Add lighting
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(0, 5, 10);
-    scene.add(directionalLight);
+    directionalLight.position.set(0, 3, 10);
+    // scene.add(directionalLight);
 
     // Load the 3D model
     const fbxLoader = new FBXLoader();
@@ -64,13 +172,7 @@ const Header = () => {
       }
     );
 
-    const positions = [
-      { x: -45, y: 8, z: 0 },
-      { x: 45, y: 8, z: -20 },
-      { x: -10, y: 8, z: 15 },
-      // Add more positions as needed
-    ];
-
+    // Load trees
     fbxLoader.load(
       "../treemodel/Pbr/lod.fbx",
       (object) => {
@@ -86,7 +188,7 @@ const Header = () => {
         object.scale.set(0.1, 0.1, 0.1);
 
         // Loop through the positions array and clone the object for each position
-        positions.forEach((pos) => {
+        treePositions.forEach((pos) => {
           const objectClone = object.clone(); // Clone the loaded object
           objectClone.position.set(pos.x, pos.y, pos.z); // Set unique position
           scene.add(objectClone); // Add the cloned object to the scene
@@ -100,23 +202,17 @@ const Header = () => {
       }
     );
 
-    const textArray = [
-      { x: -50, y: 0, z: -50, text: "Kurwa Bobr CTO" },
-      { x: 20, y: 10, z: -30, text: "t.me/bobrportal" },
-      { x: -10, y: 5, z: 15, text: "x.com/bobrCTO" },
-    ];
-
-    // Load font and add text geometry
+    // Load trext
     const fontLoader = new FontLoader();
     fontLoader.load(
       "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
       (font) => {
-        // Loop through the textStrings array and create text meshes
-        textArray.forEach((text, index) => {
+        // Loop through the textArray and create text meshes
+        textArray.forEach((text) => {
           const textGeometry = new TextGeometry(text.text, {
             font: font,
-            size: 10, // Adjust size as needed
-            depth: 5, // Adjust depth as needed
+            size: text.size, // Adjust size as needed
+            depth: 0, // Adjust depth as needed
             curveSegments: 12,
             bevelEnabled: true,
             bevelThickness: 0.03,
@@ -126,17 +222,21 @@ const Header = () => {
           });
 
           const textMaterial = new THREE.MeshStandardMaterial({
-            color: 0xd713f5,
+            color: text.color,
           });
 
           const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-          if (textArray[index]) {
-            textMesh.position.set(
-              textArray[index].x,
-              textArray[index].y,
-              textArray[index].z
-            ); // Set unique position based on the index
-          }
+
+          // Set position
+          textMesh.position.set(text.x, text.y, text.z);
+
+          // Set rotation
+          textMesh.rotation.set(
+            text.rotation.x,
+            text.rotation.y,
+            text.rotation.z
+          );
+
           textMesh.renderOrder = 1;
           textMesh.receiveShadow = true;
           scene.add(textMesh); // Add each text mesh to the scene
@@ -160,11 +260,16 @@ const Header = () => {
     scene.add(plane);
 
     plane.renderOrder = 0;
-
+    setTerrainDone(true);
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
+
+      if (bobrPriceTextMeshRef.current) {
+        bobrPriceTextMeshRef.current.rotation.y += 0.01; // Adjust rotation speed as needed
+      }
+
       renderer.render(scene, camera);
     };
     animate();
