@@ -187,7 +187,7 @@ const Header = () => {
           }
         });
         object.scale.set(0.03, 0.03, 0.03);
-        object.position.y = 3.25;
+        object.position.y = 2.45;
         object.position.x = 38.25;
         object.position.z = 20.25;
         object.rotation.y = Math.PI / 0.5;
