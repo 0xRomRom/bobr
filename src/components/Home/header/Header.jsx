@@ -147,7 +147,7 @@ const Header = () => {
     directionalLight.position.set(0, 3, 10);
     // scene.add(directionalLight);
 
-    // Load the 3D model
+    // Load Bobr
     const fbxLoader = new FBXLoader();
     fbxLoader.load(
       "../bobrmodel/Pbr/lod.fbx",
@@ -163,6 +163,87 @@ const Header = () => {
         });
         object.scale.set(0.05, 0.05, 0.05);
         object.position.y = 3.25;
+        scene.add(object);
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    //Load Capybara
+    fbxLoader.load(
+      "../capybara/Pbr/lod.fbx",
+      (object) => {
+        object.traverse((child) => {
+          if (child.isMesh) {
+            const textureLoader = new THREE.TextureLoader();
+            const material = new THREE.MeshStandardMaterial({
+              map: textureLoader.load("../capybara/Pbr/texture_diffuse.png"),
+            });
+            child.material = material;
+          }
+        });
+        object.scale.set(0.03, 0.03, 0.03);
+        object.position.y = 3.25;
+        object.position.x = 38.25;
+        object.position.z = 20.25;
+        object.rotation.y = Math.PI / 0.5;
+
+        scene.add(object);
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    //Load moon
+    fbxLoader.load(
+      "../moonmodel/Pbr/lod.fbx",
+      (object) => {
+        object.traverse((child) => {
+          if (child.isMesh) {
+            const textureLoader = new THREE.TextureLoader();
+            const material = new THREE.MeshStandardMaterial({
+              map: textureLoader.load("../moonmodel/Pbr/texture_diffuse.png"),
+            });
+            child.material = material;
+          }
+        });
+        object.scale.set(1, 1, 1);
+        object.position.y = 333.25;
+        object.position.x = 333.25;
+        scene.add(object);
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    //Load house
+    fbxLoader.load(
+      "../house/House.fbx",
+      (object) => {
+        object.traverse((child) => {
+          if (child.isMesh) {
+            const textureLoader = new THREE.TextureLoader();
+            const material = new THREE.MeshStandardMaterial({
+              map: textureLoader.load("../house/House.png"),
+            });
+            child.material = material;
+          }
+        });
+        object.scale.set(0.01, 0.01, 0.01);
+        object.position.y = 0;
+        object.position.x = 35;
         scene.add(object);
       },
       (xhr) => {
@@ -262,6 +343,19 @@ const Header = () => {
 
     plane.renderOrder = 0;
     setTerrainDone(true);
+
+    const sunLight = new THREE.DirectionalLight(0xfff1a5, 1);
+    sunLight.position.set(100, 100, 100); // Position the sun light high up in the sky
+    scene.add(sunLight);
+
+    // Create a sphere to represent the sun
+    const sunGeometry = new THREE.SphereGeometry(5, 32, 32); // Radius 5
+    const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xfff1a5 });
+    const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+    sunMesh.position.set(0, 100, 0); // Match the light's position
+    sunMesh.scale.set(3, 3, 3);
+    scene.add(sunMesh);
+
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
