@@ -64,7 +64,7 @@ const Header = () => {
 
         const quoteResponse = await response.json();
         console.log(quoteResponse);
-        const bobrPrice = quoteResponse.data[inputMint].price;
+        const bobrPrice = quoteResponse?.data[inputMint]?.price || 0;
 
         const fontLoader = new FontLoader();
         fontLoader.load(

@@ -5,9 +5,9 @@ import MemeMaker from "./components/Mememaker/MemeMaker";
 import { useEffect } from "react";
 
 const App = () => {
-  useEffect(() => {
-    alert("Kurwa!");
-  }, []);
+  // useEffect(() => {
+  //   alert("Kurwa!");
+  // }, []);
   return (
     <>
       {/* <Nav /> */}
